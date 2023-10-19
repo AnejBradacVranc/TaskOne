@@ -13,8 +13,8 @@ fun main(args: Array<String>) {
     val players = List(20) {
         Player(
             faker.money.amount(IntRange(100, 200), true, ".", ","),
-            faker.barcode.ean13().toLong(),
-            faker.commerce.productName(),
+            faker.name.name(),
+            faker.name.lastName(),
             helpers.generatePlayerRank(100)
         )
     }
@@ -31,7 +31,7 @@ fun main(args: Array<String>) {
 
         println(tableTennisClub)
 
-        println("Kolicina izdelkov v skladiscu: ${tableTennisClub.size()}")
+        println("V klubu je prevec igralcev za njegovo kapaciteto! ${tableTennisClub.size()}")
 
     } catch (e: WarehouseInsufficientCapacityException) {
         println(e.message)
