@@ -11,6 +11,6 @@ class TableTennisClub(val players : List<Player>, val location: Location, val ma
         return players.size
     }
     override fun toString(): String {
-        return "SKLADISCE \n ${players.toString()} \n ${location.toString()}"
+        return "KLUB \n ${players.toString()} \n ${location.toString()}"
     }
 }
