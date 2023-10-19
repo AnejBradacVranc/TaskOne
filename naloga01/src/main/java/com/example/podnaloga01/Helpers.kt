@@ -4,10 +4,10 @@ import kotlin.random.Random
 
 class Helpers {
 
-    fun generateProductWeights( n: Int):Double{
+    fun generatePlayerRank(n: Int): Int{
 
         val random = Random.Default
 
-        return    random.nextDouble()* 100.0
+        return random.nextInt()* 100;
     }
 }

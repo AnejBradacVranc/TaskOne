@@ -10,28 +10,28 @@ fun main(args: Array<String>) {
 
     val faker = Faker()
     val helpers = Helpers()
-    val products = List(20) {
-        Product(
+    val players = List(20) {
+        Player(
             faker.money.amount(IntRange(100, 200), true, ".", ","),
             faker.barcode.ean13().toLong(),
             faker.commerce.productName(),
-            helpers.generateProductWeights(100)
+            helpers.generatePlayerRank(100)
         )
     }
 
-    val sortedProducts = products.sorted()
-    val warehouse: Warehouse
+    val sortedProducts = players.sorted()
+    val tableTennisClub: TableTennisClub
     try {
-        warehouse =
-            Warehouse(
+        tableTennisClub =
+            TableTennisClub(
                 sortedProducts,
                 Location(faker.address.streetAddress(), faker.address.country()),
                 15
             )
 
-        println(warehouse)
+        println(tableTennisClub)
 
-        println("Kolicina izdelkov v skladiscu: ${warehouse.size()}")
+        println("Kolicina izdelkov v skladiscu: ${tableTennisClub.size()}")
 
     } catch (e: WarehouseInsufficientCapacityException) {
         println(e.message)
