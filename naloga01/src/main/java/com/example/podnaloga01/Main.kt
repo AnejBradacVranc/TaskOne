@@ -31,9 +31,9 @@ fun main(args: Array<String>) {
 
         println(tableTennisClub)
 
-        println("V klubu je prevec igralcev za njegovo kapaciteto! ${tableTennisClub.size()}")
+        println("Stevilo igralcev v klubu: ${tableTennisClub.size()}")
 
-    } catch (e: WarehouseInsufficientCapacityException) {
+    } catch (e: TTClubInsufficientCapacityException) {
         println(e.message)
     }
 

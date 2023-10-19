@@ -4,7 +4,7 @@ class TableTennisClub(val players : List<Player>, val location: Location, val ma
 
     init {
         if(players.size > maxSize)
-            throw WarehouseInsufficientCapacityException("Prevec izdelkov za to skladisce!")
+            throw TTClubInsufficientCapacityException("V klubu je prevec igralcev za njegovo kapaciteto!")
     }
 
     override fun size(): Int {
