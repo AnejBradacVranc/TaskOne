@@ -1,8 +1,8 @@
 package com.example.podnaloga01
 
-class Player(val contractPrice: String, val name: String, val surename: String, val rank: Int): Comparable<Player>{
+open class Player(val membershipPrice: String, val name: String, val surname: String, val rank: Int): Comparable<Player>{
 
     override fun compareTo(other: Player): Int = rank compareTo other.rank
-    override fun toString(): String = "Contract price: $contractPrice, Name: $name, Surename: $surename, Ranking: $rank"
+    override fun toString(): String = "Membership price: $membershipPrice, Name: $name, Surename: $surname, Ranking: $rank"
 
 }

@@ -9,13 +9,13 @@ class Main {
 fun main(args: Array<String>) {
 
     val faker = Faker()
-    val helpers = Helpers()
+
     val players = List(20) {
         Player(
             faker.money.amount(IntRange(100, 200), true, ".", ","),
             faker.name.name(),
             faker.name.lastName(),
-            helpers.generatePlayerRank(100)
+            Helpers.generatePlayerRank(100)
         )
     }
 
