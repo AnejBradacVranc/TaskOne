@@ -10,24 +10,19 @@ fun main(args: Array<String>) {
 
     val faker = Faker()
 
-    val players = List(20) {
-        Player(
-            faker.money.amount(IntRange(100, 200), true, ".", ","),
-            faker.name.name(),
-            faker.name.lastName(),
-            Helpers.generatePlayerRank(100)
-        )
-    }
+    val players = PlayersGenerator.generate(100)
 
-    val sortedProducts = players.sorted()
+    val sortedPlayers = players.sorted()
+
     val tableTennisClub: TableTennisClub
     try {
         tableTennisClub =
             TableTennisClub(
-                sortedProducts,
                 Location(faker.address.streetAddress(), faker.address.country()),
-                15
+                100
             )
+
+        tableTennisClub.addPlayers(sortedPlayers.toMutableList())
 
         println(tableTennisClub)
 

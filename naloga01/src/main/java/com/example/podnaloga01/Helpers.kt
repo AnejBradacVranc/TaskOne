@@ -7,9 +7,7 @@ class Helpers {
     companion object{
         fun generatePlayerRank(n: Int): Int{
 
-            val random = Random.Default
-
-            return random.nextInt()* 100;
+            return (0..n).random()
         }
     }
 
