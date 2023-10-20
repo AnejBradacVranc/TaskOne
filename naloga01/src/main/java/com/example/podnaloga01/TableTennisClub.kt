@@ -30,8 +30,15 @@ class TableTennisClub( val location: Location, val maxSize: Int,var players : Mu
     }
 
     fun averageLocalRanking(): Int{
-        var sum = 0
-        players.forEach { sum+=it.localRank  }
-        return sum / players.size
+        if(players.isNotEmpty()) return players.sumOf {it.localRank }/players.size
+        return -1
+    }
+
+    fun nameLongerThanFive(): List <Player>{
+        return players.filter { it.name.length>5 }.take(10)
+    }
+
+    fun countOccurencies(string: String): Int{
+        return players.filter { it.name == string || it.surname == string  }.size
     }
 }
