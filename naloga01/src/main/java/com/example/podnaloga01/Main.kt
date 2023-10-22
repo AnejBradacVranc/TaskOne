@@ -24,13 +24,25 @@ fun main(args: Array<String>) {
 
         tableTennisClub.addPlayers(sortedPlayers.toMutableList())
 
-        println(tableTennisClub)
+        val wantedString = "se";
 
-        println("Stevilo igralcev v klubu: ${tableTennisClub.size()}")
+        //println(tableTennisClub)
+        //println("Stevilo igralcev v klubu: ${tableTennisClub.size()}")
+
+        println("Objekti, ki vsebujejo niz ${wantedString}:\n ${tableTennisClub.findByString(wantedString)}")
+
+        println("Objekti, ki ne vsebujejo niza ${wantedString}:\n ${tableTennisClub.doesNotContainString(wantedString)}")
+
+        println("Povprecna lokalna uvrstitev:\n ${tableTennisClub.averageLocalRanking()}")
+
+        println("Objekti, z imenom daljsim od 5:\n ${tableTennisClub.nameLongerThan(5,10)}")
+
+        println("Pojavitve niza:\n ${tableTennisClub.countOccurencies(wantedString)}")
 
     } catch (e: TTClubInsufficientCapacityException) {
         println(e.message)
     }
+
 
 
     //1. izjema
@@ -57,6 +69,4 @@ fun main(args: Array<String>) {
     } catch (e: NumberFormatException) {
         println("Napaka pri formatiranju: $e")
     }
-
-
 }

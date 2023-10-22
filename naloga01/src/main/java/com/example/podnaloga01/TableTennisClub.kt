@@ -18,13 +18,13 @@ class TableTennisClub( val location: Location, val maxSize: Int,var players : Mu
     }
 
     fun findByString(string: String) : List<Player>{
-        val cpy = players;
-        cpy.removeIf{!it.name.contains(string) || !it.surname.contains(string)}
+        val cpy = players.toMutableList();
+        cpy.removeIf{ !("${it.name} ${it.surname}").contains(string)}
         return cpy
     }
 
     fun doesNotContainString(string: String) : List<Player>{
-        val cpy = players;
+        val cpy = players.toMutableList();
         cpy.removeIf{it.name.contains(string) || it.surname.contains(string)}
         return cpy
     }
@@ -34,11 +34,16 @@ class TableTennisClub( val location: Location, val maxSize: Int,var players : Mu
         return -1
     }
 
-    fun nameLongerThanFive(): List <Player>{
-        return players.filter { it.name.length>5 }.take(10)
+    fun nameLongerThan(len: Int, n: Int): List <Player>{
+        return players.filter { it.name.length>len }.take(n)
     }
 
-    fun countOccurencies(string: String): Int{
-        return players.filter { it.name == string || it.surname == string  }.size
+    fun countOccurencies(string: String): Int {
+
+        return players.filter { it.name == string || it.surname == string }.size
     }
+
+
+
+
 }
