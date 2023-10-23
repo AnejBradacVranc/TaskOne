@@ -7,6 +7,7 @@ android {
     namespace = "com.example.taskone"
     compileSdk = 33
 
+
     defaultConfig {
         applicationId = "com.example.taskone"
         minSdk = 24
@@ -22,6 +23,9 @@ android {
             isMinifyEnabled = false
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
         }
+    }
+    buildFeatures{
+        viewBinding = true
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
