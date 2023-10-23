@@ -1,4 +1,4 @@
-package com.example.podnaloga01
+package com.example.tableTennis
 
 class TableTennisClub( val location: Location, val maxSize: Int,var players : MutableList<Player> = mutableListOf()) : Sizable{
     init {

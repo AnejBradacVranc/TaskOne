@@ -15,4 +15,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "TaskOne"
 include(":app")
-include(":naloga01")
+include(":myLib")

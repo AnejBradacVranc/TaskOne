@@ -1,6 +1,4 @@
-package com.example.podnaloga01
-
-import kotlin.random.Random
+package com.example.tableTennis
 
 class Helpers {
 

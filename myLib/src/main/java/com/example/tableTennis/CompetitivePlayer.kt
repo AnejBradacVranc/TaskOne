@@ -1,4 +1,4 @@
-package com.example.podnaloga01
+package com.example.tableTennis
 
 class CompetitivePlayer(membershipPrice: String, name: String, surname: String, rank: Int, val worldRank: Int, val contractPrice: String ): Player(membershipPrice,name,surname,rank) {
     override fun toString(): String {

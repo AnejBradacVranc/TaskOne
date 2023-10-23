@@ -1,4 +1,4 @@
-package com.example.podnaloga01
+package com.example.tableTennis
 
 import io.github.serpro69.kfaker.Faker
 

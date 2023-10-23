@@ -1,4 +1,4 @@
-package com.example.podnaloga01
+package com.example.tableTennis
 
 open class Player(val membershipPrice: String, val name: String, val surname: String, val localRank: Int): Comparable<Player>{
 
