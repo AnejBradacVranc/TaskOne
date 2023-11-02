@@ -1,6 +1,6 @@
 package com.example.tableTennis
 
-class TableTennisClub( val location: Location, val maxSize: Int,var players : MutableList<Player> = mutableListOf()) : Sizable{
+class TableTennisClub( val location: Location,  val maxSize: Int, private var players : MutableList<Player> = mutableListOf()) : Sizable{
     init {
         if(players.size > maxSize)
             throw TTClubInsufficientCapacityException("V klubu je prevec igralcev za njegovo kapaciteto!")
@@ -8,6 +8,10 @@ class TableTennisClub( val location: Location, val maxSize: Int,var players : Mu
 
     fun addPlayers(newPlayers: MutableList<Player>){
         players += newPlayers;
+    }
+
+    fun addPlayer(newPlayer : Player){
+        players.add(newPlayer)
     }
 
     override fun size(): Int {
