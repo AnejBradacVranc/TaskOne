@@ -1,6 +1,7 @@
 package com.example.taskone
 
 import android.os.Bundle
+import android.text.InputType
 import android.util.Log
 import android.view.View.OnFocusChangeListener
 import android.widget.EditText
@@ -23,21 +24,8 @@ class MainActivity : AppCompatActivity() {
 
         var tableTennisClub = TableTennisClub(Location("Koseskega ulica 10", "Slovenia"),100)
 
-        binding.memPriceInput.setOnFocusChangeListener(OnFocusChangeListener { view, hasFocus ->
-
-            if(!hasFocus){
-                if(binding.memPriceInput.text.matches("\\d+".toRegex()))
-                    binding.memPriceInput.text.append('$')
-
-                if(!binding.memPriceInput.text.matches("\\d+\\$".toRegex()) && !binding.memPriceInput.text.isBlank())
-                {
-                    binding.memPriceInput.text.clear()
-                    binding.memPriceInput.setError("Invalid input")
-                }
-
-            }
-
-        })
+        binding.memPriceInput.addTextChangedListener(MoneyTextWatcher(binding.memPriceInput))
+        binding.memPriceInput.setText("0")
 
         binding.addPlayerButton.setOnClickListener{
 
@@ -47,10 +35,11 @@ class MainActivity : AppCompatActivity() {
                 tableTennisClub.addPlayer(player)
                 clearInputFields()
                 Toast.makeText(applicationContext,"Player added succesfully", Toast.LENGTH_LONG).show()
+                binding.memPriceInput.setText("0")
             }
         }
 
-        binding.infoButton.setOnClickListener{Log.w("TableTennisClubApp", "Stevilo igralcev v klubu: ${tableTennisClub.size()}")}
+        binding.infoButton.setOnClickListener{Log.w("TableTennisClubApp", "Stevilo igralcev v klubu: ${tableTennisClub.size()}, ${tableTennisClub.toString()}")}
 
         binding.exitButton.setOnClickListener{finish()}
 
