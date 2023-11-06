@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
-    android:background="@drawable/app_background">
+    android:background="@drawable/app_background"
+    tools:context=".MainActivity">
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline"
@@ -19,13 +19,13 @@
         android:id="@+id/formtitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
         android:gravity="center"
         android:text="Add player"
         android:textColor="@color/white"
-        android:textSize="35dp"
+        android:textSize="34sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -34,10 +34,10 @@
         android:layout_width="58dp"
         android:layout_height="23dp"
         android:layout_marginEnd="16dp"
-        android:textColor="@color/white"
         android:background="@drawable/underline"
-        android:text="Name:"
         android:labelFor="@id/name_input"
+        android:text="Name:"
+        android:textColor="@color/white"
         app:layout_constraintBaseline_toBaselineOf="@+id/name_input"
         app:layout_constraintEnd_toStartOf="@+id/guideline" />
 
@@ -47,8 +47,8 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
         android:background="@drawable/underline"
-        android:text="Surname:"
         android:labelFor="@id/surname_input"
+        android:text="Surname:"
         android:textColor="@color/white"
         app:layout_constraintBaseline_toBaselineOf="@+id/surname_input"
         app:layout_constraintEnd_toStartOf="@+id/guideline" />
@@ -70,8 +70,8 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
         android:background="@drawable/underline"
-        android:text="Local rank:"
         android:labelFor="@id/rank_input"
+        android:text="Local rank:"
         android:textColor="@color/white"
         app:layout_constraintBaseline_toBaselineOf="@+id/rank_input"
         app:layout_constraintEnd_toStartOf="@+id/guideline" />
@@ -81,15 +81,15 @@
         android:layout_width="155dp"
         android:layout_height="48dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="16dp"
         android:background="@drawable/rounded_corner"
         android:ems="10"
         android:inputType="text"
         android:padding="5dp"
-        android:textCursorDrawable="@null"
         android:textColor="@color/white"
+        android:textCursorDrawable="@null"
         app:layout_constraintStart_toStartOf="@+id/guideline"
-        app:layout_constraintTop_toBottomOf="@+id/formtitle" />
+        app:layout_constraintTop_toTopOf="@+id/guideline3" />
 
     <EditText
 
@@ -115,9 +115,9 @@
         android:layout_marginTop="32dp"
         android:background="@drawable/rounded_corner"
         android:ems="10"
+        android:hint="$"
         android:inputType="text"
         android:padding="5dp"
-        android:hint="$"
         android:textColor="@color/white"
         android:textCursorDrawable="@null"
         app:layout_constraintStart_toStartOf="@+id/guideline"
@@ -145,8 +145,8 @@
         android:layout_marginEnd="32dp"
         android:layout_marginBottom="32dp"
         android:backgroundTint="#33FFFFFF"
-        android:textColor="@color/white"
         android:text="Add"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
@@ -157,10 +157,29 @@
         android:layout_marginStart="8dp"
         android:layout_marginBottom="8dp"
         android:backgroundTint="#00FFFFFF"
+        android:contentDescription="Get info"
         android:scaleType="center"
         android:src="@drawable/info_icon"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageButton
+        android:id="@+id/exit_button"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:background="#00FFFFFF"
+        android:contentDescription="Exit"
         app:layout_constraintStart_toStartOf="parent"
-        android:contentDescription="Get info"/>
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/baseline_exit_icon" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.09" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

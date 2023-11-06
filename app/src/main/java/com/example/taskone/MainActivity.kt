@@ -52,6 +52,8 @@ class MainActivity : AppCompatActivity() {
 
         binding.infoButton.setOnClickListener{Log.w("TableTennisClubApp", "Stevilo igralcev v klubu: ${tableTennisClub.size()}")}
 
+        binding.exitButton.setOnClickListener{finish()}
+
     }
 
     private fun clearInputFields(){
