@@ -1,70 +1,58 @@
 package com.example.taskone
 
-import android.os.Bundle
-import android.text.InputType
-import android.util.Log
-import android.view.View.OnFocusChangeListener
-import android.widget.EditText
-import android.widget.Toast
+import android.app.Activity
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
+import android.util.Log
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.view.isVisible
 import com.example.tableTennis.Location
 import com.example.tableTennis.Player
 import com.example.tableTennis.TableTennisClub
+import com.example.taskone.databinding.ActivityAddPlayerBinding
 import com.example.taskone.databinding.ActivityMainBinding
-
 
 class MainActivity : AppCompatActivity() {
 
-    lateinit var binding: ActivityMainBinding
-    override fun onCreate(savedInstanceState: Bundle?) {
+    private lateinit var binding: ActivityMainBinding
+    private var tableTennisClub = TableTennisClub(Location("Koseskega ulica 10", "Slovenia"),100)
+    private var getContent = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){
+            result ->
+        if(result.resultCode == Activity.RESULT_OK){
 
+            val data: Intent? = result.data
+            val memPrice: String? = data?.getStringExtra("membershipPrice")
+            val name : String? = data?.getStringExtra("name")
+            val surname : String? = data?.getStringExtra("surname")
+            val localRank: Int? = data?.getIntExtra("localRank", -1)
+
+           if(memPrice != null && name != null && surname != null && localRank != null)
+           {
+               tableTennisClub.addPlayer(Player(memPrice,name,surname,localRank))
+               binding.addedPname.isVisible = true
+               binding.addedMemPriceTw.text = "Membership price: ${memPrice}";
+               binding.addedNmSurTw.text = "Name and surname: ${name} ${surname}";
+               binding.addedLclRankingTw.text = "Local ranking: ${localRank.toString()}";
+           }
+
+            Log.i("test",tableTennisClub.toString())
+
+        }
+    }
+    override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        binding.addedPname.isVisible = false
 
-        var tableTennisClub = TableTennisClub(Location("Koseskega ulica 10", "Slovenia"),100)
 
-        binding.memPriceInput.addTextChangedListener(MoneyTextWatcher(binding.memPriceInput))
-        binding.memPriceInput.setText("0")
+        binding.addPlayerBtn.setOnClickListener {
 
-        binding.addPlayerButton.setOnClickListener{
-
-            if(isFormValid())
-            {
-                val player = Player(binding.memPriceInput.text.toString(),binding.nameInput.text.toString(),binding.surnameInput.text.toString(),binding.rankInput.text.toString().toInt())
-                tableTennisClub.addPlayer(player)
-                clearInputFields()
-                Toast.makeText(applicationContext,"Player added succesfully", Toast.LENGTH_LONG).show()
-                binding.memPriceInput.setText("0")
-            }
+            val intent = Intent(this, AddPlayerActivity::class.java)
+            getContent.launch(intent)
         }
-
-        binding.infoButton.setOnClickListener{Log.w("TableTennisClubApp", "Stevilo igralcev v klubu: ${tableTennisClub.size()}, ${tableTennisClub.toString()}")}
-
-        binding.exitButton.setOnClickListener{finish()}
-
     }
 
-    private fun clearInputFields(){
-
-        val inputsList = listOf<EditText>(binding.memPriceInput,binding.nameInput,binding.surnameInput,binding.rankInput)
-
-        inputsList.forEach { it.text.clear() }
-    }
-
-    private fun isFormValid(): Boolean{
-
-        var isFormValid = true
-        val inputsList = listOf<EditText>( binding.memPriceInput, binding.nameInput,binding.surnameInput,binding.rankInput)
-
-        inputsList.forEach {
-            if(it.text.isBlank()){
-                it.error = "Value can't be empty!"
-                isFormValid = false
-            }
-        }
-
-        return isFormValid
-    }
 
 }

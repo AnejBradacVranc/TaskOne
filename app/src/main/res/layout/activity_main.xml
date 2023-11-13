@@ -2,184 +2,135 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/zntk_logo"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/app_background"
     tools:context=".MainActivity">
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.45" />
-
-
-    <TextView
-        android:id="@+id/formtitle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="Add player"
-        android:textColor="@color/white"
-        android:textSize="34sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/name_tw"
-        android:layout_width="58dp"
-        android:layout_height="23dp"
-        android:layout_marginEnd="16dp"
-        android:background="@drawable/underline"
-        android:labelFor="@id/name_input"
-        android:text="Name:"
-        android:textColor="@color/white"
-        app:layout_constraintBaseline_toBaselineOf="@+id/name_input"
-        app:layout_constraintEnd_toStartOf="@+id/guideline" />
-
-    <TextView
-        android:id="@+id/surname_tw"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:background="@drawable/underline"
-        android:labelFor="@id/surname_input"
-        android:text="Surname:"
-        android:textColor="@color/white"
-        app:layout_constraintBaseline_toBaselineOf="@+id/surname_input"
-        app:layout_constraintEnd_toStartOf="@+id/guideline" />
-
-    <TextView
-        android:id="@+id/membership_tw"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:background="@drawable/underline"
-        android:labelFor="@id/memPrice_input"
-        android:text="Membership price:"
-        android:textColor="@color/white"
-        app:layout_constraintBaseline_toBaselineOf="@+id/memPrice_input"
-        app:layout_constraintEnd_toStartOf="@+id/guideline" />
-
-    <TextView
-        android:id="@+id/rank_tw"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:background="@drawable/underline"
-        android:labelFor="@id/rank_input"
-        android:text="Local rank:"
-        android:textColor="@color/white"
-        app:layout_constraintBaseline_toBaselineOf="@+id/rank_input"
-        app:layout_constraintEnd_toStartOf="@+id/guideline" />
-
-    <EditText
-        android:id="@+id/name_input"
-        android:layout_width="155dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/rounded_corner"
-        android:ems="10"
-        android:inputType="text"
-        android:padding="5dp"
-        android:textColor="@color/white"
-        android:textCursorDrawable="@null"
-        app:layout_constraintStart_toStartOf="@+id/guideline"
-        app:layout_constraintTop_toTopOf="@+id/guideline3" />
-
-    <EditText
-
-        android:id="@+id/surname_input"
-        android:layout_width="155dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="32dp"
-        android:background="@drawable/rounded_corner"
-        android:ems="10"
-        android:inputType="text"
-        android:padding="5dp"
-        android:textColor="@color/white"
-        android:textCursorDrawable="@null"
-        app:layout_constraintStart_toStartOf="@+id/guideline"
-        app:layout_constraintTop_toBottomOf="@+id/name_input" />
-
-    <EditText
-        android:id="@+id/memPrice_input"
-        android:layout_width="155dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="32dp"
-        android:background="@drawable/rounded_corner"
-        android:ems="10"
-        android:inputType="number"
-        android:padding="5dp"
-        android:textColor="@color/white"
-        android:textCursorDrawable="@null"
-        app:layout_constraintStart_toStartOf="@+id/guideline"
-        app:layout_constraintTop_toBottomOf="@+id/surname_input" />
-
-    <EditText
-        android:id="@+id/rank_input"
-        android:layout_width="155dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="32dp"
-        android:background="@drawable/rounded_corner"
-        android:ems="10"
-        android:inputType="number"
-        android:padding="5dp"
-        android:textColor="@color/white"
-        android:textCursorDrawable="@null"
-        app:layout_constraintStart_toStartOf="@+id/guideline"
-        app:layout_constraintTop_toBottomOf="@+id/memPrice_input" />
-
-    <Button
-        android:id="@+id/addPlayer_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="32dp"
-        android:layout_marginBottom="32dp"
-        android:backgroundTint="#33FFFFFF"
-        android:text="Add"
-        android:textColor="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
     <ImageButton
-        android:id="@+id/info_button"
+        android:id="@+id/add_player_btn"
         android:layout_width="48dp"
         android:layout_height="48dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="24dp"
         android:backgroundTint="#00FFFFFF"
-        android:contentDescription="Get info"
-        android:scaleType="center"
-        android:src="@drawable/info_icon"
+        android:contentDescription="Add player"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/main_person_add_big" />
 
     <ImageButton
-        android:id="@+id/exit_button"
+        android:id="@+id/exit_button_main"
         android:layout_width="48dp"
         android:layout_height="48dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:background="#00FFFFFF"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        android:backgroundTint="#00FFFFFF"
         android:contentDescription="Exit"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/baseline_exit_icon" />
 
+    <ImageButton
+        android:id="@+id/info_button_main"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginBottom="24dp"
+        android:backgroundTint="#00FFFFFF"
+        android:contentDescription="Info"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/info_icon" />
+
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline3"
+        android:id="@+id/guideline_main"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.09" />
+        app:layout_constraintGuide_percent="0.15" />
 
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:elevation="8dp"
+        app:cardCornerRadius="32dp"
+        app:cardElevation="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/added_pname"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline_main">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="0dp"
+            app:srcCompat="@drawable/zntk_logo" />
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/added_pname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Recently added player:"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/added_memPrice_tw"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardView" />
+
+    <TextView
+        android:id="@+id/added_memPrice_tw"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toTopOf="@+id/added_nmSur_tw"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/added_pname" />
+
+    <TextView
+        android:id="@+id/added_nmSur_tw"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toTopOf="@+id/added_lclRanking_tw"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/added_memPrice_tw" />
+
+    <TextView
+        android:id="@+id/added_lclRanking_tw"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline_main2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/added_nmSur_tw"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_main2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.84" />
 </androidx.constraintlayout.widget.ConstraintLayout>
