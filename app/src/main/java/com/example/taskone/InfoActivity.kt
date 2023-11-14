@@ -13,9 +13,7 @@ class InfoActivity : AppCompatActivity() {
         binding = ActivityInfoBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.exitInfoButton.setOnClickListener{
-            finish()
-        }
+        binding.exitInfoButton.setOnClickListener{finish()}
     }
 
 
