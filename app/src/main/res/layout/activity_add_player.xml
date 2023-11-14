@@ -169,4 +169,16 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.09" />
 
+    <ImageButton
+        android:id="@+id/qrScan_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginBottom="32dp"
+        android:background="#00FFFFFF"
+        android:contentDescription="Scan QR code"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/info_qr" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
