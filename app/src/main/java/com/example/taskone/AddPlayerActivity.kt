@@ -62,7 +62,7 @@ class AddPlayerActivity : AppCompatActivity() {
 
                 dataArray = res.split(';')
 
-                if(dataArray.size !=4 || dataArray[3].toIntOrNull() == null || MoneyTextWatcher.parseCurrencyValue(dataArray[2]) == BigDecimal.ZERO)
+                if(dataArray.size !=4 || dataArray[3].toIntOrNull() == null || MoneyTextWatcher.parseCurrencyValue(dataArray[2]) == BigDecimal.ZERO || dataArray[0].contains("[0-9]".toRegex()) || dataArray[1].contains("[0-9]".toRegex()))
                     throw Exception("Invalid data from QR code")
 
                 binding.nameInput.setText(dataArray[0])
