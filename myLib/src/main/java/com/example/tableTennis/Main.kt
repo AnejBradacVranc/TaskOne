@@ -41,7 +41,7 @@ fun main(args: Array<String>) {
 
     } catch (e: TTClubInsufficientCapacityException) {
         println(e.message)
-    }
+    } //try catch block prej
 
 
 

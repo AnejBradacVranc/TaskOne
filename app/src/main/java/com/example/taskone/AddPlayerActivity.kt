@@ -57,26 +57,25 @@ class AddPlayerActivity : AppCompatActivity() {
     }
 
     private fun updateInputFields(res: String){
-        try{
+
             val dataArray : List<Any>
 
                 dataArray = res.split(';')
 
                 if(dataArray.size !=4 || dataArray[3].toIntOrNull() == null || MoneyTextWatcher.parseCurrencyValue(dataArray[2]) == BigDecimal.ZERO || dataArray[0].contains("[0-9]".toRegex()) || dataArray[1].contains("[0-9]".toRegex()))
-                    throw Exception("Invalid data from QR code")
+                {
+                    clearInputFields()
+                    Toast.makeText(applicationContext,"Nepravilna QR koda!", Toast.LENGTH_LONG).show()
+                    val vibrator = this.getSystemService(Vibrator::class.java)
+                    vibrator.vibrate(VibrationEffect.createOneShot(800,50))
+                }
+            else{
 
-                binding.nameInput.setText(dataArray[0])
-                binding.surnameInput.setText(dataArray[1])
-                binding.memPriceInput.setText(dataArray[2])
-                binding.rankInput.setText(dataArray[3])
-
-
-        }catch (e:Exception){
-            clearInputFields()
-            Toast.makeText(applicationContext,"Nepravilna QR koda!", Toast.LENGTH_LONG).show()
-            val vibrator = this.getSystemService(Vibrator::class.java)
-            vibrator.vibrate(VibrationEffect.createOneShot(800,50))
-        }
+                    binding.nameInput.setText(dataArray[0])
+                    binding.surnameInput.setText(dataArray[1])
+                    binding.memPriceInput.setText(dataArray[2])
+                    binding.rankInput.setText(dataArray[3])
+                }
     }
 
     fun onScanQrCode(view: android.view.View) {
