@@ -43,7 +43,7 @@
         android:layout_marginTop="@dimen/about_view_top_margin_main_title"
         android:fontFamily="@font/montserratsemibold"
         android:textColor="@color/white"
-        android:textSize="20sp"
+        android:textSize="@dimen/big_font_size"
         android:text="@string/zntk_club_manager"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

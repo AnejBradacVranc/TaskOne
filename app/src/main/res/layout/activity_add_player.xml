@@ -23,7 +23,7 @@
         android:text="@string/add_player"
         android:fontFamily="@font/montserratsemibold"
         android:textColor="@color/white"
-        android:textSize="34sp"
+        android:textSize="@dimen/xxl_font_size"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
