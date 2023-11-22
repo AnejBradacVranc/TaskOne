@@ -80,7 +80,7 @@
         android:text="@string/recently_added_player"
         android:textColor="@color/white"
         android:textSize="20sp"
-        android:fontFamily="@font/MontserratBold"
+        android:fontFamily="@font/montserratsemibold"
         app:layout_constraintBottom_toTopOf="@+id/added_memPrice_tw"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -89,7 +89,7 @@
 
     <TextView
         android:id="@+id/added_memPrice_tw"
-        android:fontFamily="@font/MontserratRegular"
+        android:fontFamily="@font/montserratregular"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
@@ -103,7 +103,7 @@
 
     <TextView
         android:id="@+id/added_nmSur_tw"
-        android:fontFamily="@font/MontserratRegular"
+        android:fontFamily="@font/montserratregular"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
@@ -117,7 +117,7 @@
 
     <TextView
         android:id="@+id/added_lclRanking_tw"
-        android:fontFamily="@font/MontserratRegular"
+        android:fontFamily="@font/montserratregular"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
