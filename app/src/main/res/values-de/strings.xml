@@ -10,7 +10,7 @@
     <string name="exit">Ausfahrt</string>
     <string name="scan_qr_code">QR-Code scannen</string>
     <string name="info">Info</string>
-    <string name="recently_added_player"><b>kürzlich hinzugefügter Spieler.</b></string>
+    <string name="recently_added_player"><b>Kürzlich hinzugefügter Spieler.</b></string>
     <string name="zntk_club_manager"><b>ZNTK-Clubmanager</b></string>
     <string name="application_for_managing_and_keeping_evidence_of_players_and_their_memberships">Antrag auf Verwaltung und Nachweisführung von Spielern und deren Mitgliedschaften</string>
     <string name="version_1_4_0"><b>Ausführung 1.4.0</b></string>

@@ -9,12 +9,8 @@
 
     <ImageButton
         android:id="@+id/exit_info_button"
-        android:layout_width="@dimen/button_width"
-        android:layout_height="@dimen/button_height"
-        android:layout_marginStart="@dimen/exit_button_margin"
-        android:layout_marginTop="@dimen/exit_button_margin"
-        android:backgroundTint="@color/transparent"
         android:contentDescription="@string/exit"
+        style="@style/NavigationExitButton"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/baseline_exit_icon" />
@@ -52,12 +48,9 @@
     <TextView
         android:id="@+id/info_desc"
         android:layout_width="160dp"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/montserratregular"
         android:layout_marginTop="@dimen/about_view_top_margin"
-        android:textAlignment="center"
         android:text="@string/application_for_managing_and_keeping_evidence_of_players_and_their_memberships"
-        android:textColor="@color/white"
+        style="@style/InfoAboutContent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/info_name" />
