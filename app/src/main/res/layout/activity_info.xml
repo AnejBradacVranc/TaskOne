@@ -78,7 +78,7 @@
         android:id="@+id/info_author"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/montserratlight"
+        android:fontFamily="@font/montserratlightitalic"
         android:layout_marginTop="@dimen/about_view_top_margin"
         android:textColor="@color/white"
         android:text="@string/app_author"
