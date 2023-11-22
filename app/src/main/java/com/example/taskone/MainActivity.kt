@@ -30,12 +30,12 @@ class MainActivity : AppCompatActivity() {
            {
                tableTennisClub.addPlayer(Player(memPrice,name,surname,localRank))
                binding.addedPname.isVisible = true
-               binding.addedMemPriceTw.text = "Membership price: ${memPrice}";
-               binding.addedNmSurTw.text = "Name and surname: ${name} ${surname}";
-               binding.addedLclRankingTw.text = "Local ranking: ${localRank.toString()}";
+               binding.addedMemPriceTw.text = getString(R.string.membership_price_plchldr, memPrice)
+               binding.addedNmSurTw.text = getString(R.string.name_surname_plchldr,"$name $surname")
+               binding.addedLclRankingTw.text = getString(R.string.local_ranking_plchldr, localRank.toString())
            }
 
-            Log.i("test",tableTennisClub.toString())
+            Log.i(getString(R.string.test),tableTennisClub.toString())
 
         }
     }

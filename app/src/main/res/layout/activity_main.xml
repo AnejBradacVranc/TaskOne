@@ -10,36 +10,36 @@
 
     <ImageButton
         android:id="@+id/add_player_btn"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
+        android:layout_width="@dimen/button_width"
+        android:layout_height="@dimen/button_width"
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="24dp"
-        android:backgroundTint="#00FFFFFF"
-        android:contentDescription="Add player"
+        android:backgroundTint="@color/transparent"
+        android:contentDescription="@string/add_player"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@drawable/main_person_add_big" />
 
     <ImageButton
         android:id="@+id/exit_button_main"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="24dp"
-        android:backgroundTint="#00FFFFFF"
-        android:contentDescription="Exit"
+        android:layout_width="@dimen/button_width"
+        android:layout_height="@dimen/button_height"
+        android:layout_marginStart="@dimen/exit_button_margin"
+        android:layout_marginTop="@dimen/exit_button_margin"
+        android:backgroundTint="@color/transparent"
+        android:contentDescription="@string/exit"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/baseline_exit_icon" />
 
     <ImageButton
         android:id="@+id/info_button_main"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
+        android:layout_width="@dimen/button_width"
+        android:layout_height="@dimen/button_width"
         android:layout_marginStart="24dp"
         android:layout_marginBottom="24dp"
-        android:backgroundTint="#00FFFFFF"
-        android:contentDescription="Info"
+        android:backgroundTint="@color/transparent"
+        android:contentDescription="@string/info"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/info_icon" />
@@ -77,10 +77,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="Recently added player:"
+        android:text="@string/recently_added_player"
         android:textColor="@color/white"
         android:textSize="20sp"
-        android:textStyle="bold"
+        android:fontFamily="@font/MontserratBold"
         app:layout_constraintBottom_toTopOf="@+id/added_memPrice_tw"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -89,6 +89,7 @@
 
     <TextView
         android:id="@+id/added_memPrice_tw"
+        android:fontFamily="@font/MontserratRegular"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
@@ -102,6 +103,7 @@
 
     <TextView
         android:id="@+id/added_nmSur_tw"
+        android:fontFamily="@font/MontserratRegular"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
@@ -115,6 +117,7 @@
 
     <TextView
         android:id="@+id/added_lclRanking_tw"
+        android:fontFamily="@font/MontserratRegular"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"

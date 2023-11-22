@@ -42,7 +42,7 @@ class AddPlayerActivity : AppCompatActivity() {
 
             if(isFormValid())
             {
-                Toast.makeText(applicationContext,"Player added succesfully", Toast.LENGTH_LONG).show()
+                Toast.makeText(applicationContext,getString(R.string.player_added_succ), Toast.LENGTH_LONG).show()
 
                 onExit(it)
                 clearInputFields()
@@ -65,7 +65,7 @@ class AddPlayerActivity : AppCompatActivity() {
                 if(dataArray.size !=4 || dataArray[3].toIntOrNull() == null || MoneyTextWatcher.parseCurrencyValue(dataArray[2]) == BigDecimal.ZERO || dataArray[0].contains("[0-9]".toRegex()) || dataArray[1].contains("[0-9]".toRegex()))
                 {
                     clearInputFields()
-                    Toast.makeText(applicationContext,"Nepravilna QR koda!", Toast.LENGTH_LONG).show()
+                    Toast.makeText(applicationContext,getString(R.string.incorrect_qr), Toast.LENGTH_LONG).show()
                     val vibrator = this.getSystemService(Vibrator::class.java)
                     vibrator.vibrate(VibrationEffect.createOneShot(800,50))
                 }
@@ -116,7 +116,7 @@ class AddPlayerActivity : AppCompatActivity() {
 
         inputsList.forEach {
             if(it.text.isBlank()){
-                it.error = "Value can't be empty!"
+                it.error = getString(R.string.empty_val_logcat_error)
                 isFormValid = false
             }
         }

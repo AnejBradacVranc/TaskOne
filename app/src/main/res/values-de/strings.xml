@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">TaskOne</string>
+    <string name="add_player">Spieler hinzufügen</string>
+    <string name="name">Name:</string>
+    <string name="surname">Nachname:</string>
+    <string name="membership_price">Mitgliedspreis:</string>
+    <string name="local_rank">Lokaler Rang:</string>
+    <string name="add">Hinzufügen</string>
+    <string name="exit">Ausfahrt</string>
+    <string name="scan_qr_code">QR-Code scannen</string>
+    <string name="info">Info</string>
+    <string name="recently_added_player"><b>kürzlich hinzugefügter Spieler.</b></string>
+    <string name="zntk_club_manager"><b>ZNTK-Clubmanager</b></string>
+    <string name="application_for_managing_and_keeping_evidence_of_players_and_their_memberships">Antrag auf Verwaltung und Nachweisführung von Spielern und deren Mitgliedschaften</string>
+    <string name="version_1_4_0"><b>Ausführung 1.4.0</b></string>
+    <string name="app_author"><b>Autor: Anej Bradač Vranc</b></string>
+    <string name="player_added_succ">Spieler erfolgreich hinzugefügt</string>
+    <string name="incorrect_qr">Falscher QR-Code!</string>
+    <string name="empty_val_logcat_error">Der Wert darf nicht leer sein!</string>
+    <string name="membership_price_plchldr">Mitgliedspreis: %s</string>
+    <string name="name_surname_plchldr">Vor- und Nachname: %s</string>
+    <string name="local_ranking_plchldr">Lokales Ranking: %s</string>
+    <string name="test">Test</string>
+</resources>

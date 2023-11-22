@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">TaskOne</string>
+    <string name="add_player">Dodaj igralca</string>
+    <string name="name">Ime:</string>
+    <string name="surname">Priimek:</string>
+    <string name="membership_price">Cena članarine:</string>
+    <string name="local_rank">Lokalna uvrstitev:</string>
+    <string name="add">Dodaj</string>
+    <string name="exit">Izhod</string>
+    <string name="scan_qr_code">Skeniraj QR kodo</string>
+    <string name="info">Info</string>
+    <string name="recently_added_player"><b>Nedavno dodan igralec:</b></string>
+    <string name="zntk_club_manager"><b>Upravljalec za ZNTK</b></string>
+    <string name="application_for_managing_and_keeping_evidence_of_players_and_their_memberships">Aplikacija za organizacijo in evidenco igralcev in njihovih članarin.</string>
+    <string name="version_1_4_0"><b>Verzija 1.4.0</b></string>
+    <string name="app_author"><i>Avtor: Anej Bradač Vranc</i></string>
+    <string name="player_added_succ">Igralec uspešno dodan</string>
+    <string name="incorrect_qr">Nepravilna QR koda!</string>
+    <string name="empty_val_logcat_error">Vrednost ne more biti prazna!</string>
+    <string name="membership_price_plchldr">Cena članarine: %s</string>
+    <string name="name_surname_plchldr">Ime in priimek: %s</string>
+    <string name="local_ranking_plchldr">Lokalna uvrstitev: %s</string>
+    <string name="test">Test</string>
+</resources>
