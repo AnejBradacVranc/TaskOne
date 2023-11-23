@@ -60,22 +60,31 @@ class AddPlayerActivity : AppCompatActivity() {
 
             val dataArray : List<Any>
 
+            try{
                 dataArray = res.split(';')
 
                 if(dataArray.size !=4 || dataArray[3].toIntOrNull() == null || MoneyTextWatcher.parseCurrencyValue(dataArray[2]) == BigDecimal.ZERO || dataArray[0].contains("[0-9]".toRegex()) || dataArray[1].contains("[0-9]".toRegex()))
                 {
-                    clearInputFields()
-                    Toast.makeText(applicationContext,getString(R.string.incorrect_qr), Toast.LENGTH_LONG).show()
-                    val vibrator = this.getSystemService(Vibrator::class.java)
-                    vibrator.vibrate(VibrationEffect.createOneShot(800,50))
+                    onIncorrectQRCode()
                 }
-            else{
+                else{
 
                     binding.nameInput.setText(dataArray[0])
                     binding.surnameInput.setText(dataArray[1])
                     binding.memPriceInput.setText(dataArray[2])
                     binding.rankInput.setText(dataArray[3])
                 }
+            }catch (e:Exception){
+                onIncorrectQRCode()
+            }
+
+    }
+
+    fun onIncorrectQRCode(){
+        clearInputFields()
+        Toast.makeText(applicationContext,getString(R.string.incorrect_qr), Toast.LENGTH_LONG).show()
+        val vibrator = this.getSystemService(Vibrator::class.java)
+        vibrator.vibrate(VibrationEffect.createOneShot(800,50))
     }
 
     fun onScanQrCode(view: android.view.View) {
