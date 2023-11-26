@@ -16,7 +16,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
 
     private var tableTennisClub = TableTennisClub(Location("Koseskega ulica 10", "Slovenia"),100)
-    private var getQRScanContent = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){
+    private var getAddedPlayerContent = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){
             result ->
         if(result.resultCode == Activity.RESULT_OK){
 
@@ -56,7 +56,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun onOpenAddPlayerActivity(view : android.view.View){
         val intent = Intent(this, AddPlayerActivity::class.java)
-        getQRScanContent.launch(intent)
+        getAddedPlayerContent.launch(intent)
     }
 
     private fun onOpenInfoActivity(view: android.view.View){
