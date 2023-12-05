@@ -112,4 +112,14 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.84" />
+
+    <ImageButton
+        android:id="@+id/settings_button"
+        android:contentDescription="@string/settings"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="@dimen/nav_button_margin"
+        style="@style/SettingsButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/baseline_settings_24" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,7 +1,9 @@
 package com.example.taskone
 
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.net.Uri
 import android.os.Bundle
 import android.os.VibrationEffect
@@ -11,12 +13,16 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
 import com.example.taskone.databinding.ActivityAddPlayerBinding
+import timber.log.Timber
 import java.math.BigDecimal
 
 class AddPlayerActivity : AppCompatActivity() {
 
-    lateinit var binding: ActivityAddPlayerBinding
+    private lateinit var binding: ActivityAddPlayerBinding
+    private lateinit var sharedPref: SharedPreferences
+    private lateinit var app : MyApplication
 
     private var getData = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
             result ->
@@ -32,8 +38,12 @@ class AddPlayerActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
+        app = application as MyApplication
         binding = ActivityAddPlayerBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        initShared()
+
+        StatisticUtils.incrementCount(sharedPref,"AddPlayerActivityOpenCount")
 
         binding.memPriceInput.addTextChangedListener(MoneyTextWatcher(binding.memPriceInput))
         binding.memPriceInput.setText("0")
@@ -52,7 +62,12 @@ class AddPlayerActivity : AppCompatActivity() {
 
         binding.exitButton.setOnClickListener{finish() }
 
-        binding.qrScanButton.setOnClickListener { onScanQrCode(it) }
+        if(sharedPref.getBoolean("QR_Enabled", true)){
+            binding.qrScanButton.setOnClickListener { onScanQrCode(it) }
+        }else{
+            binding.qrScanButton.isVisible = false
+        }
+
 
     }
 
@@ -80,14 +95,14 @@ class AddPlayerActivity : AppCompatActivity() {
 
     }
 
-    fun onIncorrectQRCode(){
+    private fun onIncorrectQRCode(){
         clearInputFields()
         Toast.makeText(applicationContext,getString(R.string.incorrect_qr), Toast.LENGTH_LONG).show()
         val vibrator = this.getSystemService(Vibrator::class.java)
         vibrator.vibrate(VibrationEffect.createOneShot(800,50))
     }
 
-    fun onScanQrCode(view: android.view.View) {
+    private fun onScanQrCode(view: android.view.View) {
         try {
             val intent = Intent("com.google.zxing.client.android.SCAN")
             intent.putExtra("SCAN_MODE", "QR_CODE_MODE") // use “PRODUCT_MODE” for barcodes
@@ -133,4 +148,12 @@ class AddPlayerActivity : AppCompatActivity() {
         return isFormValid
     }
 
+    private fun initShared() {
+        sharedPref = getSharedPreferences( MY_SP, Context.MODE_PRIVATE)
+    }
+
+    override fun onPause() {
+        super.onPause()
+        app.activityPaused()
+    }
 }

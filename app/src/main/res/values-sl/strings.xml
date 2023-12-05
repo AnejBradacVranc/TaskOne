@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="settings">Nastavitve</string>
     <string name="app_name">TaskOne</string>
     <string name="add_player">Dodaj igralca</string>
     <string name="name">Ime:</string>
@@ -21,5 +22,9 @@
     <string name="membership_price_plchldr">Cena članarine: %s</string>
     <string name="name_surname_plchldr">Ime in priimek: %s</string>
     <string name="local_ranking_plchldr">Lokalna uvrstitev: %s</string>
+    <string name="english_en">Angleščina-en</string>
+    <string name="german_de">Nemščina-de</string>
+    <string name="slovene_sl">Slovenščina-sl</string>
     <string name="test">Test</string>
+    <string name="enable_qr_code_scan">Omogoči QR</string>
 </resources>

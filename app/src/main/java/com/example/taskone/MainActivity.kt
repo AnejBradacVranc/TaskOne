@@ -1,6 +1,8 @@
 package com.example.taskone
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -14,8 +16,9 @@ import com.example.taskone.databinding.ActivityMainBinding
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
+    private lateinit var sharedPref: SharedPreferences
+    private lateinit var app : MyApplication
 
-    private var tableTennisClub = TableTennisClub(Location("Koseskega ulica 10", "Slovenia"),100)
     private var getAddedPlayerContent = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){
             result ->
         if(result.resultCode == Activity.RESULT_OK){
@@ -28,22 +31,26 @@ class MainActivity : AppCompatActivity() {
 
            if(memPrice != null && name != null && surname != null && localRank != null)
            {
-               tableTennisClub.addPlayer(Player(memPrice,name,surname,localRank))
+               app.tableTennisClub.addPlayer(Player(memPrice,name,surname,localRank))
                binding.addedPname.isVisible = true
                binding.addedMemPriceTw.text = getString(R.string.membership_price_plchldr, memPrice)
                binding.addedNmSurTw.text = getString(R.string.name_surname_plchldr,"$name $surname")
                binding.addedLclRankingTw.text = getString(R.string.local_ranking_plchldr, localRank.toString())
            }
 
-            Log.i(getString(R.string.test),tableTennisClub.toString())
+            app.saveToFile()
 
         }
     }
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
+        app = application as MyApplication
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        initShared()
+
+        StatisticUtils.incrementCount(sharedPref,"MainActivityOpenCount")
         binding.addedPname.isVisible = false
 
         binding.addPlayerBtn.setOnClickListener {onOpenAddPlayerActivity(it) }
@@ -51,6 +58,8 @@ class MainActivity : AppCompatActivity() {
         binding.infoButtonMain.setOnClickListener{onOpenInfoActivity(it) }
 
         binding.exitButtonMain.setOnClickListener { finish() }
+
+        binding.settingsButton.setOnClickListener {  onOpenSettingsActivity(it)}
 
     }
 
@@ -61,6 +70,19 @@ class MainActivity : AppCompatActivity() {
 
     private fun onOpenInfoActivity(view: android.view.View){
         startActivity(Intent(this,InfoActivity::class.java))
+    }
+
+    private fun onOpenSettingsActivity(view: android.view.View){
+        startActivity(Intent(this, SettingsActivity::class.java))
+    }
+
+    private fun initShared() {
+        sharedPref = getSharedPreferences( MY_SP, Context.MODE_PRIVATE)
+    }
+
+    override fun onPause() {
+        super.onPause()
+        app.activityPaused()
     }
 
 

@@ -37,7 +37,11 @@ android {
 }
 
 dependencies {
+    implementation("com.github.YarikSOffice:lingver:1.3.0")
     implementation(project(mapOf("path" to ":myLib")))
+    implementation ("com.jakewharton.timber:timber:5.0.1")
+    implementation("org.apache.commons:commons-io:1.3.2")
+    implementation("com.google.code.gson:gson:2.8.+")
     implementation("androidx.core:core-ktx:1.9.0")
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("com.google.android.material:material:1.8.0")

@@ -22,4 +22,9 @@
     <string name="name_surname_plchldr">Name and surname: %s</string>
     <string name="local_ranking_plchldr">Local ranking: %s</string>
     <string name="test">Test</string>
+    <string name="english_en">English-en</string>
+    <string name="german_de">German-de</string>
+    <string name="slovene_sl">Slovenian-sl</string>
+    <string name="settings">Settings</string>
+    <string name="enable_qr_code_scan">Enable QR</string>
 </resources>
