@@ -7,6 +7,19 @@
     android:background="@drawable/app_background"
     tools:context=".InfoActivity">
 
+    <TextView
+        android:id="@+id/info_app_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/montserratregular"
+        android:text="@null"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/info_version" />
+
     <ImageButton
         android:id="@+id/exit_info_button"
         android:contentDescription="@string/exit"
@@ -71,12 +84,12 @@
         android:id="@+id/info_author"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         android:fontFamily="@font/montserratlight"
-        android:layout_marginTop="@dimen/about_view_top_margin"
-        android:textColor="@color/white"
         android:text="@string/app_author"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/info_version" />
+        app:layout_constraintTop_toBottomOf="@+id/info_app_id" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

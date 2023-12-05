@@ -17,9 +17,12 @@ class InfoActivity : AppCompatActivity() {
         app = application as MyApplication
         binding = ActivityInfoBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
         initShared()
 
         StatisticUtils.incrementCount(sharedPref,"InfoActivityOpenCount")
+
+        binding.infoAppId.text = getString(R.string.app_id_plchldr, SharedPreferencesUtils.getID(sharedPref, "AppID"))
 
         binding.exitInfoButton.setOnClickListener{finish()}
     }
@@ -28,9 +31,5 @@ class InfoActivity : AppCompatActivity() {
         sharedPref = getSharedPreferences( MY_SP, Context.MODE_PRIVATE)
     }
 
-    override fun onPause() {
-        super.onPause()
-        app.activityPaused()
-    }
 
 }

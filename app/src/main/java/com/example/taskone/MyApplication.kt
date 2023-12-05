@@ -3,6 +3,8 @@ import android.app.Application
 import android.content.Context
 import android.content.SharedPreferences
 import android.content.pm.ApplicationInfo
+import androidx.lifecycle.DefaultLifecycleObserver
+import androidx.lifecycle.LifecycleOwner
 import com.example.tableTennis.Location
 import com.example.tableTennis.TableTennisClub
 import com.google.gson.Gson
@@ -11,10 +13,13 @@ import org.apache.commons.io.FileUtils
 import timber.log.Timber
 import java.io.File
 import java.io.IOException
+import androidx.lifecycle.ProcessLifecycleOwner
+import java.util.UUID
+
 
 const val SERIALIZATION_FILE = "serializationObjects.json"
 const val MY_SP = "sharedPreferences.data"
-class MyApplication: Application() {
+class MyApplication: Application(){
 
     lateinit var tableTennisClub : TableTennisClub
     private lateinit var sharedPref: SharedPreferences
@@ -22,11 +27,10 @@ class MyApplication: Application() {
     private lateinit var file: File
 
     private var isDebuggable = false
-    private var countAppOpen = 0
     override fun onCreate() {
 
         super.onCreate()
-        Lingver.init(this)
+
         isDebuggable = 0 != applicationInfo.flags and ApplicationInfo.FLAG_DEBUGGABLE
 
         if(isDebuggable)
@@ -34,8 +38,17 @@ class MyApplication: Application() {
 
         gson = Gson()
         file = File(filesDir, SERIALIZATION_FILE)
-        Timber.d("File name path ${file.path}")
+        Lingver.init(this)
+
+        ProcessLifecycleOwner.get().lifecycle.addObserver(object: DefaultLifecycleObserver{
+            override fun onPause(owner: LifecycleOwner) {
+                StatisticUtils.incrementCount(sharedPref,"AppBackgroundCount")
+                super.onPause(owner)
+            }
+        })
+
         initShared()
+        setAppID()
         initData()
 
         StatisticUtils.incrementCount(sharedPref,"AppOpenCount")
@@ -64,9 +77,11 @@ class MyApplication: Application() {
         }
     }
 
-    fun activityPaused() {
-        StatisticUtils.incrementCount(sharedPref,"AppBackgroundCount")
-    }
+    private fun setAppID(){
+        if (!SharedPreferencesUtils.containsID(sharedPref, "AppID"))
+            SharedPreferencesUtils.saveID(sharedPref, "AppID", UUID.randomUUID().toString().replace("-", ""))
 
+        Timber.d("ID of app is ${SharedPreferencesUtils.getID(sharedPref, "AppID")}")
+    }
 }
 

@@ -8,14 +8,12 @@ import android.net.Uri
 import android.os.Bundle
 import android.os.VibrationEffect
 import android.os.Vibrator
-import android.view.HapticFeedbackConstants
 import android.widget.EditText
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import com.example.taskone.databinding.ActivityAddPlayerBinding
-import timber.log.Timber
 import java.math.BigDecimal
 
 class AddPlayerActivity : AppCompatActivity() {
@@ -152,8 +150,4 @@ class AddPlayerActivity : AppCompatActivity() {
         sharedPref = getSharedPreferences( MY_SP, Context.MODE_PRIVATE)
     }
 
-    override fun onPause() {
-        super.onPause()
-        app.activityPaused()
-    }
 }

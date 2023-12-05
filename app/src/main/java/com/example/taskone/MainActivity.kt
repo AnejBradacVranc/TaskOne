@@ -5,12 +5,9 @@ import android.content.Intent
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.view.isVisible
-import com.example.tableTennis.Location
 import com.example.tableTennis.Player
-import com.example.tableTennis.TableTennisClub
 import com.example.taskone.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -48,19 +45,16 @@ class MainActivity : AppCompatActivity() {
         app = application as MyApplication
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
         initShared()
 
-        StatisticUtils.incrementCount(sharedPref,"MainActivityOpenCount")
         binding.addedPname.isVisible = false
-
         binding.addPlayerBtn.setOnClickListener {onOpenAddPlayerActivity(it) }
-
         binding.infoButtonMain.setOnClickListener{onOpenInfoActivity(it) }
-
         binding.exitButtonMain.setOnClickListener { finish() }
-
         binding.settingsButton.setOnClickListener {  onOpenSettingsActivity(it)}
 
+        StatisticUtils.incrementCount(sharedPref,"MainActivityOpenCount")
     }
 
     private fun onOpenAddPlayerActivity(view : android.view.View){
@@ -78,11 +72,6 @@ class MainActivity : AppCompatActivity() {
 
     private fun initShared() {
         sharedPref = getSharedPreferences( MY_SP, Context.MODE_PRIVATE)
-    }
-
-    override fun onPause() {
-        super.onPause()
-        app.activityPaused()
     }
 
 

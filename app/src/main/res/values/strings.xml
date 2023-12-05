@@ -20,6 +20,7 @@
     <string name="membership_price_plchldr">Membership price: %s</string>
     <string name="name_surname_plchldr">Name and surname: %s</string>
     <string name="local_ranking_plchldr">Local ranking: %s</string>
+    <string name="app_id_plchldr" translatable="false">%s</string>
     <string name="test">Test</string>
     <string name="english_en">English-en</string>
     <string name="german_de">German-de</string>
