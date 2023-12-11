@@ -14,6 +14,8 @@ import timber.log.Timber
 import java.io.File
 import java.io.IOException
 import androidx.lifecycle.ProcessLifecycleOwner
+import com.example.tableTennis.Player
+import com.example.tableTennis.PlayersGenerator
 import java.util.UUID
 
 
@@ -30,6 +32,7 @@ class MyApplication: Application(){
     override fun onCreate() {
 
         super.onCreate()
+
 
         isDebuggable = 0 != applicationInfo.flags and ApplicationInfo.FLAG_DEBUGGABLE
 
@@ -52,6 +55,9 @@ class MyApplication: Application(){
         initData()
 
         StatisticUtils.incrementCount(sharedPref,"AppOpenCount")
+
+        //tableTennisClub.players = PlayersGenerator.generate(100).toMutableList()
+        //saveToFile()
     }
 
     fun saveToFile(){ //Klice se v Main activity

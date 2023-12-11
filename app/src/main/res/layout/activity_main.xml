@@ -43,69 +43,6 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.15" />
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:elevation="8dp"
-        app:cardCornerRadius="32dp"
-        app:cardElevation="10dp"
-        app:layout_constraintBottom_toTopOf="@+id/added_pname"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline_main">
-
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="0dp"
-            app:srcCompat="@drawable/zntk_logo" />
-    </androidx.cardview.widget.CardView>
-
-    <TextView
-        android:id="@+id/added_pname"
-        android:layout_marginTop="16dp"
-        android:text="@string/recently_added_player"
-        style="@style/MainTitle"
-        app:layout_constraintBottom_toTopOf="@+id/added_memPrice_tw"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardView" />
-
-    <TextView
-        android:id="@+id/added_memPrice_tw"
-        android:layout_marginTop="32dp"
-        app:layout_constraintBottom_toTopOf="@+id/added_nmSur_tw"
-        style="@style/MainDetailsText"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/added_pname" />
-
-    <TextView
-        android:id="@+id/added_nmSur_tw"
-        android:layout_marginTop="32dp"
-        style="@style/MainDetailsText"
-        app:layout_constraintBottom_toTopOf="@+id/added_lclRanking_tw"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/added_memPrice_tw" />
-
-    <TextView
-        android:id="@+id/added_lclRanking_tw"
-        android:layout_marginTop="32dp"
-        style="@style/MainDetailsText"
-        app:layout_constraintBottom_toTopOf="@+id/guideline_main2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/added_nmSur_tw"
-        app:layout_constraintVertical_bias="0.0" />
-
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline_main2"
         android:layout_width="wrap_content"
@@ -122,4 +59,24 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/baseline_settings_24" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="350dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline_main2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.524"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline_main"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_marginBottom="16dp"
+        style="@style/MainTitle"
+        android:text="@string/ntk_maribor"
+        app:layout_constraintBottom_toTopOf="@+id/guideline_main"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

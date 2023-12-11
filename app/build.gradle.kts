@@ -40,6 +40,7 @@ dependencies {
 
     implementation("com.github.YarikSOffice:lingver:1.3.0")
     implementation(project(mapOf("path" to ":myLib")))
+    implementation("com.squareup.picasso:picasso:2.71828")
     implementation ("com.jakewharton.timber:timber:5.0.1")
     implementation("org.apache.commons:commons-io:1.3.2")
     implementation("com.google.code.gson:gson:2.8.+")

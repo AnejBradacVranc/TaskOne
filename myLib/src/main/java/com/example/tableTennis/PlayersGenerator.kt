@@ -15,14 +15,14 @@ class PlayersGenerator {
                 if (type)
                     Player(
                         faker.money.amount(IntRange(100, 200), true, ".", ","),
-                        faker.name.name(),
+                        faker.name.firstName(),
                         faker.name.lastName(),
                         Helpers.generatePlayerRank(1000)
                     )
                 else
                     CompetitivePlayer(
                         faker.money.amount(IntRange(100, 200), true, ".", ","),
-                        faker.name.name(),
+                        faker.name.firstName(),
                         faker.name.lastName(),
                         Helpers.generatePlayerRank(1000),
                         Helpers.generatePlayerRank(100000),
@@ -30,5 +30,7 @@ class PlayersGenerator {
                     )
             }
         }
+
+
     }
 }

@@ -13,6 +13,7 @@ import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
+import com.example.tableTennis.Player
 import com.example.taskone.databinding.ActivityAddPlayerBinding
 import java.math.BigDecimal
 
@@ -21,6 +22,7 @@ class AddPlayerActivity : AppCompatActivity() {
     private lateinit var binding: ActivityAddPlayerBinding
     private lateinit var sharedPref: SharedPreferences
     private lateinit var app : MyApplication
+    private var isInEditMode = false
 
     private var getData = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
             result ->
@@ -36,7 +38,10 @@ class AddPlayerActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
+
+         val isInEditMode  = intent.getBooleanExtra("editMode",false)
         app = application as MyApplication
+
         binding = ActivityAddPlayerBinding.inflate(layoutInflater)
         setContentView(binding.root)
         initShared()
@@ -66,10 +71,22 @@ class AddPlayerActivity : AppCompatActivity() {
             binding.qrScanButton.isVisible = false
         }
 
+        val playerIndex = intent.getIntExtra("selectedIndex",-1) //returns the intent that started this activity!!!!!!!:DDDDDD
+
+        if(isInEditMode && playerIndex != -1){
+            updateInputFields(app.tableTennisClub.players[playerIndex])
+        }
 
     }
 
-    private fun updateInputFields(res: String){
+    private fun updateInputFields(player:Player){
+        binding.nameInput.setText(player.name)
+        binding.surnameInput.setText(player.surname)
+        binding.memPriceInput.setText(player.membershipPrice)
+        binding.rankInput.setText(player.localRank.toString())
+    }
+
+     private fun updateInputFields(res: String){
 
             val dataArray : List<Any>
 
@@ -115,10 +132,12 @@ class AddPlayerActivity : AppCompatActivity() {
 
     private fun onExit(view: android.view.View){
         val data = Intent()
+
         data.putExtra("membershipPrice", binding.memPriceInput.text.toString())
         data.putExtra("name", binding.nameInput.text.toString())
         data.putExtra("surname", binding.surnameInput.text.toString())
         data.putExtra("localRank", binding.rankInput.text.toString().toInt())
+        data.putExtra("editMode", isInEditMode)
 
         setResult(RESULT_OK, data)
         finish()

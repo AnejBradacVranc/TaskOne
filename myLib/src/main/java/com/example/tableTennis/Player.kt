@@ -12,6 +12,6 @@ open class Player(
 
 
     override fun compareTo(other: Player): Int = localRank compareTo other.localRank
-    override fun toString(): String = "Membership price: $membershipPrice, Name: $name, Surename: $surname, Ranking: $localRank, ID: $id"
+    override fun toString(): String = "\nMembership price: $membershipPrice\nName: $name\nSurename: $surname\nRanking: $localRank\nID: $id"
 
 }

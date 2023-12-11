@@ -27,4 +27,5 @@
     <string name="local_ranking_plchldr">Lokales Ranking: %s</string>
     <string name="test">Test</string>
     <string name="enable_qr_code_scan">QR aktivieren</string>
+    <string name="ntk_maribor">ŽNTK Maribor</string>
 </resources>

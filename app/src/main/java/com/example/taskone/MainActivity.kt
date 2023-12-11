@@ -1,20 +1,26 @@
 package com.example.taskone
 import android.app.Activity
+import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
+import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.core.view.isVisible
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.tableTennis.Player
 import com.example.taskone.databinding.ActivityMainBinding
+import timber.log.Timber
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
+    private lateinit var adapter: PlayerAdapter
     private lateinit var sharedPref: SharedPreferences
     private lateinit var app : MyApplication
+    private var selectedPlayerIndex = -1
 
     private var getAddedPlayerContent = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){
             result ->
@@ -25,18 +31,23 @@ class MainActivity : AppCompatActivity() {
             val name : String? = data?.getStringExtra("name")
             val surname : String? = data?.getStringExtra("surname")
             val localRank: Int? = data?.getIntExtra("localRank", -1)
+            val isInEditMode: Boolean? = data?.getBooleanExtra("editMode", false)
 
-           if(memPrice != null && name != null && surname != null && localRank != null)
+           if(memPrice != null && name != null && surname != null && localRank != null && isInEditMode !=null)
            {
-               app.tableTennisClub.addPlayer(Player(memPrice,name,surname,localRank))
-               binding.addedPname.isVisible = true
-               binding.addedMemPriceTw.text = getString(R.string.membership_price_plchldr, memPrice)
-               binding.addedNmSurTw.text = getString(R.string.name_surname_plchldr,"$name $surname")
-               binding.addedLclRankingTw.text = getString(R.string.local_ranking_plchldr, localRank.toString())
+               val player = Player(memPrice,name,surname,localRank)
+
+               if(!isInEditMode) {
+                   app.tableTennisClub.addPlayer(player)
+                   adapter.notifyItemChanged(app.tableTennisClub.players.size)
+               }
+               else if(isInEditMode && selectedPlayerIndex !=-1){
+                   app.tableTennisClub.editPlayer(player,selectedPlayerIndex)
+                   adapter.notifyItemChanged(selectedPlayerIndex)
+               }
+               //adapter.notifyDataSetChanged()
            }
-
             app.saveToFile()
-
         }
     }
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -48,17 +59,65 @@ class MainActivity : AppCompatActivity() {
 
         initShared()
 
-        binding.addedPname.isVisible = false
         binding.addPlayerBtn.setOnClickListener {onOpenAddPlayerActivity(it) }
         binding.infoButtonMain.setOnClickListener{onOpenInfoActivity(it) }
         binding.exitButtonMain.setOnClickListener { finish() }
         binding.settingsButton.setOnClickListener {  onOpenSettingsActivity(it)}
+
+        binding.recyclerView.layoutManager = LinearLayoutManager(this)
+        adapter = PlayerAdapter(app.tableTennisClub,object:PlayerAdapter.MyOnClick {
+
+            override fun onClick(p0: View?, position: Int) {
+                Timber.d("Position $position")
+                val data = intent
+                data.putExtra("SELECTED_ID", app.tableTennisClub.players[position].id)
+
+                if(p0!=null)
+                {
+                    val intent = Intent(p0.context, AddPlayerActivity::class.java)
+
+                    selectedPlayerIndex = position
+
+                    intent.putExtra("selectedIndex",position)
+                    intent.putExtra("editMode", true)
+
+                    getAddedPlayerContent.launch(intent)
+                }
+                setResult(RESULT_OK, data)
+            }
+
+            override fun onLongClick(p0: View?, position: Int) : Boolean {
+                val builder = AlertDialog.Builder(this@MainActivity)
+
+                builder.setTitle("Delete")
+                builder.setMessage("Player ${app.tableTennisClub.players[position]}")
+                builder.setIcon(android.R.drawable.ic_dialog_alert)
+                builder.setPositiveButton("Yes"){ _, _ ->
+                    app.tableTennisClub.removePlayer(position) //Se warning in confirmation
+                    adapter.notifyItemRemoved(position)
+                    app.saveToFile()
+                }
+                builder.setNeutralButton("Cancel"){ _, _ -> //performing cancel action
+
+                }
+                builder.setNegativeButton("No"){ _, _ -> //performing negative action
+                }
+                // Create the AlertDialog
+                val alertDialog: AlertDialog = builder.create()
+                alertDialog.setCancelable(false)
+                alertDialog.show()
+
+                return true
+            }
+        })
+        binding.recyclerView.adapter = adapter
 
         StatisticUtils.incrementCount(sharedPref,"MainActivityOpenCount")
     }
 
     private fun onOpenAddPlayerActivity(view : android.view.View){
         val intent = Intent(this, AddPlayerActivity::class.java)
+        intent.putExtra("editMode", false)
         getAddedPlayerContent.launch(intent)
     }
 
