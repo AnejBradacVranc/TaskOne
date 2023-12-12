@@ -28,4 +28,7 @@
     <string name="test">Test</string>
     <string name="enable_qr_code_scan">QR aktivieren</string>
     <string name="ntk_maribor">ŽNTK Maribor</string>
+    <string name="player_edited_succ">Spieler erfolgreich hinzugefügt</string>
+    <string name="edit">Bearbeiten</string>
+    <string name="edit_player">Spieler bearbeiten</string>
 </resources>

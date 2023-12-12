@@ -1,6 +1,6 @@
 package com.example.tableTennis
 
-class TableTennisClub( val location: Location,  val maxSize: Int, var players : MutableList<Player> = mutableListOf()) : Sizable{
+class TableTennisClub(private val location: Location, private val maxSize: Int, var players : MutableList<Player> = mutableListOf()) : Sizable{
     init {
         if(players.size > maxSize)
             throw TTClubInsufficientCapacityException("V klubu je prevec igralcev za njegovo kapaciteto!")

@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.tableTennis.Player
 import com.example.tableTennis.TableTennisClub
 import com.squareup.picasso.Picasso
+import org.w3c.dom.Text
 import timber.log.Timber
 
 class PlayerAdapter(private val data:TableTennisClub, private val onClickObject:PlayerAdapter.MyOnClick) : RecyclerView.Adapter<PlayerAdapter.ViewHolder>() {
@@ -31,6 +32,7 @@ class PlayerAdapter(private val data:TableTennisClub, private val onClickObject:
         val rvPlayerName : TextView = itemView.findViewById(R.id.rv_player_name)
         val rvPlayerRank : TextView = itemView.findViewById(R.id.rv_player_rank)
         val rvPayerImage : ImageView = itemView.findViewById(R.id.rv_player_image)
+        val rvPlayerMembership : TextView = itemView.findViewById(R.id.rv_player_membership)
         val line : CardView = itemView.findViewById(R.id.cv_Line)
         val context: Context = itemView.context
     }
@@ -52,7 +54,9 @@ class PlayerAdapter(private val data:TableTennisClub, private val onClickObject:
         Timber.d("MM onBindViewHolder ${data.size()}")
         holder.rvPlayerName.text = "${itemsViewModel.name} ${itemsViewModel.surname}"
         holder.rvPlayerRank.text = itemsViewModel.localRank.toString()
+        holder.rvPlayerMembership.text = itemsViewModel.membershipPrice
 
+        val test = MoneyTextWatcher.parseCurrencyValue(itemsViewModel.membershipPrice)
         holder.line.setOnClickListener { p0 ->
             onClickObject.onClick(p0, holder.adapterPosition)
         }

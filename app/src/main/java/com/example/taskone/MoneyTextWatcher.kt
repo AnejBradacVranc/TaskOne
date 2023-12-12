@@ -15,7 +15,8 @@ import java.util.Objects
 
 class MoneyTextWatcher(editText: EditText) : TextWatcher {
     private val editTextWeakReference: WeakReference<EditText>
-
+    private val locale = Locale("en", "US")
+    private val formatter = NumberFormat.getCurrencyInstance(locale) as DecimalFormat
     init {
         editTextWeakReference = WeakReference(editText)
         formatter.maximumFractionDigits = 0
@@ -41,7 +42,7 @@ class MoneyTextWatcher(editText: EditText) : TextWatcher {
     }
 
     companion object {
-        private val locale = Locale("id", "ID")
+        private val locale = Locale("en", "US")
         private val formatter = NumberFormat.getCurrencyInstance(locale) as DecimalFormat
         fun parseCurrencyValue(value: String): BigDecimal {
             try {

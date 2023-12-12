@@ -4,67 +4,87 @@
     android:id="@+id/cv_Line"
     android:backgroundTint="@color/transparent"
     android:layout_width="match_parent"
-    android:layout_height="110dp"
+    android:layout_height="80dp"
     android:layout_margin="10dp"
     app:cardElevation="2dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:layout_centerHorizontal="true"
-        android:weightSum="100">
+        android:layout_weight="30"
+        android:background="@color/transparent"
+        android:backgroundTint="@color/transparent"
+        android:orientation="horizontal"
+        android:padding="8dp">
+
+        <ImageView
+            android:id="@+id/rv_player_image"
+            android:layout_width="48dp"
+            android:layout_height="48dp" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/transparent"
-            android:backgroundTint="@color/transparent"
-            android:orientation="horizontal"
-            android:padding="8dp"
-            android:layout_weight="30">
+            android:layout_centerHorizontal="true"
+            android:orientation="vertical"
+            android:weightSum="100">
 
-            <ImageView
-                android:id="@+id/rv_player_image"
-                android:layout_width="48dp"
-                android:layout_height="48dp" />
-
-            <TextView
-                android:id="@+id/rv_player_name"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="5dp"
-                android:layout_weight="1"
-                android:text="Player name"
-                android:textAlignment="center"
-                android:textColor="@color/white" />
+                android:layout_height="match_parent"
+                android:layout_weight="50"
+                android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/rv_player_rank"
+                <TextView
+                    android:id="@+id/rv_player_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_weight="1"
+                    android:text="Player rank"
+                    android:textAlignment="center"
+                    android:textColor="@color/white" />
+
+                <TextView
+                    android:id="@+id/rv_player_rank"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_weight="1"
+                    android:text="Player name"
+                    android:textAlignment="center"
+                    android:textColor="@color/white" />
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:layout_weight="1"
-                android:text="Player rank"
-                android:textAlignment="center"
-                android:textColor="@color/white" />
-        </LinearLayout>
+                android:layout_height="match_parent"
+                android:layout_weight="70"
+                android:orientation="horizontal">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:layout_weight="70">
+                <TextView
+                    android:id="@+id/rv_player_global_rank"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="0dp"
+                    android:layout_weight="1"
+                    android:text="@string/membership_price"
+                    android:textAlignment="center"
+                    android:textColor="@color/white" />
 
-            <TextView
-                android:layout_marginLeft="60dp"
-                android:id="@+id/textView9"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Membership price" />
+                <TextView
+                    android:id="@+id/rv_player_membership"
+                    android:layout_width="match_parent"
+                    android:layout_marginStart="10dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="0dp"
+                    android:layout_weight="1"
+                    android:text=""
+                    android:textAlignment="center"
+                    android:textColor="@color/white" />
 
+            </LinearLayout>
         </LinearLayout>
     </LinearLayout>
 

@@ -39,7 +39,10 @@ class AddPlayerActivity : AppCompatActivity() {
 
         super.onCreate(savedInstanceState)
 
-         val isInEditMode  = intent.getBooleanExtra("editMode",false)
+        isInEditMode  = intent.getBooleanExtra("editMode",false)
+
+
+
         app = application as MyApplication
 
         binding = ActivityAddPlayerBinding.inflate(layoutInflater)
@@ -48,6 +51,12 @@ class AddPlayerActivity : AppCompatActivity() {
 
         StatisticUtils.incrementCount(sharedPref,"AddPlayerActivityOpenCount")
 
+        if(isInEditMode)
+        {
+            binding.addPlayerButton.text = getString(R.string.edit)
+            binding.formtitle.text = getString(R.string.edit_player)
+        }
+
         binding.memPriceInput.addTextChangedListener(MoneyTextWatcher(binding.memPriceInput))
         binding.memPriceInput.setText("0")
 
@@ -55,7 +64,10 @@ class AddPlayerActivity : AppCompatActivity() {
 
             if(isFormValid())
             {
-                Toast.makeText(applicationContext,getString(R.string.player_added_succ), Toast.LENGTH_LONG).show()
+                if(isInEditMode)
+                    Toast.makeText(applicationContext,getString(R.string.player_edited_succ), Toast.LENGTH_LONG).show()
+                else
+                    Toast.makeText(applicationContext,getString(R.string.player_added_succ), Toast.LENGTH_LONG).show()
 
                 onExit(it)
                 clearInputFields()

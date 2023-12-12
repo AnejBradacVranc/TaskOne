@@ -28,4 +28,7 @@
     <string name="settings">Settings</string>
     <string name="enable_qr_code_scan">Enable QR</string>
     <string name="ntk_maribor">ŽNTK Maribor</string>
+    <string name="player_edited_succ">Player edited successfully</string>
+    <string name="edit">Edit</string>
+    <string name="edit_player">Edit player</string>
 </resources>

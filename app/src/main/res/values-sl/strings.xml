@@ -28,4 +28,7 @@
     <string name="test">Test</string>
     <string name="enable_qr_code_scan">Omogoči QR</string>
     <string name="ntk_maribor">ŽNTK Maribor</string>
+    <string name="player_edited_succ">Podatki igralca uspešno posodobljeni</string>
+    <string name="edit">Uredi</string>
+    <string name="edit_player">Urejanje igralca</string>
 </resources>
