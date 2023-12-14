@@ -15,7 +15,6 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tableTennis.Player
 import com.example.tableTennis.TableTennisClub
-import com.squareup.picasso.Picasso
 import org.w3c.dom.Text
 import timber.log.Timber
 
